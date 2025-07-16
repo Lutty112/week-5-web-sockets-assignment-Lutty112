@@ -37,7 +37,11 @@ app.use("/api/rooms", require("./routes/roomRoutes"));
 app.use("/api/messages", require("./routes/messageRoutes"));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-
+// 🚀 Serve React frontend
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // Connect and Start server
 connectDB();
