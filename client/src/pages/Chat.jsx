@@ -187,6 +187,11 @@ const handleNotificationClick = () => {
             onClick={requestNotificationPermission}>
               🔔 Enable Notifications
           </button>
+          <button
+            onClick={() => navigate("/rooms")}
+            className="bg-gray-400 text-pink-700 px-3 py-1 rounded text-sm">
+              ⬅ Rooms
+          </button>
         </div>
       </header>
       <UserSidebar users={onlineUsers} />

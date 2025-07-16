@@ -129,6 +129,9 @@ Open `http://localhost:5173` in your browser.
 ### Register/Login Page
 ![Register/Login](Screenshots/LoginPage.png)
 
+## Rooms Page
+![Roomspage](Screenshots/RoomsPage.png)
+
 ### Chat Page
 ![Chatpage](Screenshots/ChatPage.png)
 

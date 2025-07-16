@@ -9,30 +9,29 @@ export default function AuthPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
-    try {
-      const apiCall = isLogin ? loginUser : registerUser;
-      const res = await apiCall({ username, password });
+ const handleSubmit = async () => {
+  try {
+    const apiCall = isLogin ? loginUser : registerUser;
+    const res = await apiCall({ username, password });
 
-      localStorage.setItem("username", username);
-      localStorage.setItem("token", res.data.token);
+    localStorage.setItem("username", res.data.user.username);
+    localStorage.setItem("token", res.data.token); 
+    localStorage.setItem("userId", res.data.user._id); 
+  
 
-      navigate("/chat/general", {
-        state: { username, roomId: "general" },
-      });
-    } catch (err) {
-      console.error("Auth failed", err);
-    }
-  };
+
+    navigate("/rooms"); // Redirect to the room selector
+  } catch (err) {
+    console.error("Auth failed", err);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-300 text-pink-500 relative">
-      {/* Logo Top Right */}
-      <div className="absolute top-4 right-4">
+        <div className="absolute top-4 right-4">
         <img src={logo} alt="Logo" className="w-20 h-20 rounded-full shadow" />
       </div>
 
-      {/* Welcome Message */}
       <div className="text-center pt-8">
         <h1 className="text-4xl font-bold">Welcome to Convo Cloud ☁️</h1>
         <p className="text-sm text-pink-500">Connect. Chat. React in Real-Time.</p>
