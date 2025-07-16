@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "pnpm nodemon",
-    "build": "npm install --prefix client && npm run build --prefix client && npm install"
+    "build": "pnpm install --prefix client && pnpm run build --prefix client && pnpm install"
   },
   "keywords": [],
   "author": "",
