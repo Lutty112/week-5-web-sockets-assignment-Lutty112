@@ -22,7 +22,8 @@ router.post('/upload', upload.single('image'), (req, res) => {
   res.status(201).json({ url: filePath });
 });
 router.post('/', sendMessage);
-router.get('/:roomId', getRoomMessages);
+router.get('/room/:roomId', getRoomMessages);
+
 
 
 module.exports = router;
