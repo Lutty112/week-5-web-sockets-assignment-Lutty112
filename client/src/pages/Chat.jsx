@@ -29,8 +29,8 @@ export default function Chat() {
 
   const fetchMessages = async () => {
   setLoadingMore(true);
-  const res = await API.get(`/messages/${roomId}?skip=${page * limit}&limit=${limit}`);
-  
+  const res = await API.get(`/messages/room/${roomId}?skip=${page * limit}&limit=${limit}`);
+
   setMessages((prev) => {
     const combined = [...res.data, ...prev];
     const unique = Array.from(new Map(combined.map(msg => [msg._id, msg])).values());
