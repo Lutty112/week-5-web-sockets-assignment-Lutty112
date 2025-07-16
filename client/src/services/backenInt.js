@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
+const baseURL = import.meta.env.VITE_API_URL?.trim() || 'http://localhost:5000';
+
+// Axios instance
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: `${baseURL}/api`,
 });
 
 // Add Authorization header if token exists
@@ -12,11 +15,12 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-export const registerUser = (data) => API.post("/auth/register", data);
-export const loginUser = (data) => API.post("/auth/login", data);
-
-export const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
+// Socket.io
+export const socket = io(baseURL, {
   withCredentials: true,
 });
+
+export const registerUser = (data) => API.post("/auth/register", data);
+export const loginUser = (data) => API.post("/auth/login", data);
 
 export default API;
