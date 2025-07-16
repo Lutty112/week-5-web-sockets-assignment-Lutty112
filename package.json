@@ -1,8 +1,0 @@
-{
-  "name": "convo-cloud-root",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "cd server && node server.js"
-  }
-}
