@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "dev": "pnpm nodemon",
+    "start": "node server.js",
+    "dev": "pnpm start",
     "build": "pnpm install --prefix client && pnpm run build --prefix client && pnpm install"
   },
   "keywords": [],
