@@ -37,14 +37,18 @@ app.use("/api/rooms", require("./routes/roomRoutes"));
 app.use("/api/messages", require("./routes/messageRoutes"));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// 🚀 Serve React frontend
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
+// Serve React frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
+  });
+}
+
 
 // Connect and Start server
 connectDB();
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
