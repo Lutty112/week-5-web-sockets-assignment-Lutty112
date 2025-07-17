@@ -22,7 +22,7 @@ if (!userId) {
   }, []);
 
   const handleJoinRoom = (room) => {
-    navigate(`/chat/${room._id}`);
+    navigate(`/chat/${room.name}`);
   };
 
   const handleCreateRoom = async () => {
@@ -50,7 +50,7 @@ if (!userId) {
         },
       }
     );
-    navigate(`/chat/${res.data._id}`);
+    navigate(`/chat/${res.data.name}`);
   } catch (err) {
     console.error("Error creating room:", err);
     alert(err.response?.data?.error || "Failed to create room");
