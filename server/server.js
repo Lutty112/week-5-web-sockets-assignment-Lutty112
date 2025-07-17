@@ -14,8 +14,9 @@ const server = http.createServer(app);
 
 // Allow only frontend on Vercel to connect
 const allowedOrigins = [
+  'https://week-5-web-sockets-assignment-lutty.vercel.app',
   'http://localhost:5173',
-  'https://week-5-web-sockets-assignment-lutty.vercel.app'];
+  ];
 
 // CORS for Express
 app.use(cors({
