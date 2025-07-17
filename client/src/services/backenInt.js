@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
-const baseURL = import.meta.env.VITE_API_URL?.trim() || 'http://localhost:5000';
+const rawURL = import.meta.env.VITE_API_URL || '';
+const baseURL = rawURL.replace(/\/+$/, '') || 'http://localhost:5000';
 
 // Axios instance
 const API = axios.create({
