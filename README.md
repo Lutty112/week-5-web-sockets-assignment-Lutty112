@@ -140,9 +140,9 @@ Open `http://localhost:5173` in your browser.
 🌍  Deployment
 The app is deployed and publicly available at:
 
-🔗 Vercel Live URL:(https://week-5-web-sockets-assignment-lutty.vercel.app/)
+🔗 Vercel Live URL: https://week-5-web-sockets-assignment-lutty.vercel.app/
 
-🔗 Render Live URL:(https://week-5-web-sockets-assignment-igtt.onrender.com)
+🔗 Render Live URL: https://week-5-web-sockets-assignment-igtt.onrender.com
 
 ---
 
