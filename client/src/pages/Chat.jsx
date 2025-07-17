@@ -24,6 +24,7 @@ export default function Chat() {
   const limit = 20;
   const navigate = useNavigate();
   const { logout } = useAuth();
+  
 
   const currentUser = { _id: localStorage.getItem('userId') || 'me' };
 
@@ -48,7 +49,7 @@ export default function Chat() {
   }, []);
 
   useEffect(() => {
-    fetchMessages();
+   fetch(`${API}/api/messages`)
     socket.emit('joinRoom', { username, roomId });
 
     socket.on('newMessage', (msg) => {
