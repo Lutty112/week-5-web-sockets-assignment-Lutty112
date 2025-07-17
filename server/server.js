@@ -7,6 +7,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
 const connectDB = require("./config/db");
+const cors = require('cors')
 
 // Load environment variables
 dotenv.config();
@@ -15,12 +16,9 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
-    methods: ['GET', 'POST'],
-    credentials: true,
-  },
-});
+      cors: { origin: "*" }
+  });
+
 
 // Socket.IO
 require('./socket')(io);
@@ -37,13 +35,6 @@ app.use("/api/rooms", require("./routes/roomRoutes"));
 app.use("/api/messages", require("./routes/messageRoutes"));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serve React frontend in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'client', 'dist', 'index.html'));
-  });
-}
 
 
 // Connect and Start server
