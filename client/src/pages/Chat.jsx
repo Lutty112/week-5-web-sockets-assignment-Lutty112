@@ -12,8 +12,7 @@ import { useAuth } from  '../context/AuthContext';
 
 
 export default function Chat() {
-  console.log(roomId);
-  const { roomId } = useParams();
+   const { roomId } = useParams();
   const username = localStorage.getItem('username');
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
@@ -27,14 +26,6 @@ export default function Chat() {
   const { logout } = useAuth();
   const currentUser = { _id: localStorage.getItem('userId') || 'me' };
  
-  // Guard clause for invalid room or missing user info
-  if (!roomId) {
-    return <div className="p-4 text-red-600">Invalid room. Please go back and select a room.</div>;
-  }
-  if (!username || !currentUser._id || currentUser._id === 'me') {
-    navigate('/');
-    return null;
-  }
 
   const fetchMessages = async () => {
   setLoadingMore(true);
@@ -203,7 +194,7 @@ const handleNotificationClick = () => {
           <button
             onClick={() => navigate("/rooms")}
             className="bg-gray-400 text-pink-700 px-3 py-1 rounded text-sm">
-              ⬅ Rooms
+              Rooms
           </button>
         </div>
       </header>
@@ -217,8 +208,8 @@ const handleNotificationClick = () => {
               backgroundPosition: "center",
               minHeight: "100vh",
             }} >
-              {/*<div className="absolute inset-0 bg-gray opacity-40 z-0 pointer-events-none"/>
-              <div className="relative z-10"></div> */}
+              <div className="absolute inset-0 bg-gray opacity-40 z-0 pointer-events-none"/>
+              <div className="relative z-10"></div>
           {messages.map((msg) => (
             <MessageBubble
               key={msg._id}

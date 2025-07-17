@@ -63,7 +63,7 @@ if (!userId) {
       <button
         onClick={() => navigate('/')}
         className="bg-gray-400 text-pink-600 px-4 py-2 rounded hover:bg-gray-600 mb-6">
-        ⬅ Back to Login
+        Back to Login
       </button>
 
       <div className="max-w-3xl mx-auto bg-white shadow rounded p-6">
