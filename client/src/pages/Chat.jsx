@@ -49,7 +49,6 @@ export default function Chat() {
   }, []);
 
   useEffect(() => {
-   fetch(`${API}/api/messages`)
     socket.emit('joinRoom', { username, roomId });
 
     socket.on('newMessage', (msg) => {
